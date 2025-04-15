@@ -1,0 +1,17 @@
+<div class="todo-container">
+  <input type="text" #text />
+  <button (click)="add(text)">Add</button>
+  <button (click)="loadTodos()">Load</button>
+  <br />
+  <div>
+    <ul>
+      @if(error | async){
+      <div>{{ error | async }}</div>
+      }@else { @for (todo of todoList; track $index) {
+      <li>
+        {{ todo.title }} <button (click)="remove(todo.id)">Delete</button>
+      </li>
+      } }
+    </ul>
+  </div>
+</div>
